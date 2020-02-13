@@ -1,6 +1,5 @@
 /*
 Basic Vector class.
-
 Holds three floats, can do the majority of vector math
 */
 
@@ -21,14 +20,9 @@ class Vec3f
     float getZ();
 
     //Vector Math Methods
-    float dot(Vec3f vector)
-    {
-      float newX = x * vector.getX();
-      float newY = y * vector.getY();
-      float newZ = z * vector.getZ();
-
-      return newX + newY + newZ;
-    }
+    float dot(Vec3f vector);
+    Vec3f cross(Vec3f vector);
+    
 
     //Operators
     Vec3f operator + (Vec3f vector) 
