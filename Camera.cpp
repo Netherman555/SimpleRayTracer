@@ -1,23 +1,23 @@
 #include "Camera.h"
-#include <math.h>
 
-//sohcahtoa
-
-Camera::Camera(Ray cameraRay, int Fov, int FovY, int clippingDistance, int resolutionX, int resolutionY)
+Camera::Camera(Ray cameraRay, int xFOV, int yFOV, double ClippingDistance, int ResolutionX, int ResolutionY)
 {
-	cameraPoint = cameraRay.getOrigin();
-	direction = cameraRay.getDirection();
-	fov = Fov;
-	clipDistance = clippingDistance;
+  cameraPoint = cameraRay.getOrigin();
+  cameraDirection = cameraRay.getDirection();
 
-	cameraPlaneWidth = tan(fov / 2) * clipDistance;
-	cameraPlaneHeight = tan(FovY / 2) * clipDistance;
+  xFov = xFOV;
+  yFov = yFOV;
 
-	
-}
+  clippingDistance = ClippingDistance;
 
-Camera::Camera()
-{
-	cameraPoint = Vec3f(0, 0, 0);
-	direction = Vec3f(1, 0, 0);
+  resolutionX = ResolutionX;
+  resolutionY = ResolutionY;
+
+  planeWidth = tan(xFov / 2) * clippingDistance;
+  planeHeight = tan(yFov / 2) * clippingDistance;
+
+  pixelLocations.resize(resolutionX * resolutionY);
+
+  //Initializes all pixel positions for rendering
+  w
 }
