@@ -41,3 +41,26 @@ float Plane::getD()
 {
   return d;
 }
+
+Vec3f Plane::findCollision(Ray ray)
+{
+  Vec3f origin = ray.getOrigin();
+  Vec3f direction = ray.getDirection();
+
+  float pXD = direction.getX() * x;
+  float pYD = direction.getY() * y;
+  float pZD = direction.getZ() * z;
+
+  float pXO = origin.getX() * x;
+  float pYO = origin.getY() * y;
+  float pZO = origin.getZ() * z;
+
+  float pO = pXO + pYO + pZO;
+  float pD = pXD + pYD + pZD;
+
+  float tempD = d * 1;
+  tempD -= pO;
+  float t = tempD / pD;
+
+  return Vec3f((t*direction.getX() + origin.getX()),(t*direction.getY() + origin.getY()),(t*direction.getZ() + origin.getZ()));
+}
