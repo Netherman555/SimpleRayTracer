@@ -1,6 +1,8 @@
 #include "Vec3f.h"
 #include <iostream>
 
+
+
 //Creates a vector with 3 floats
 Vec3f::Vec3f(float X, float Y, float Z)
 {
