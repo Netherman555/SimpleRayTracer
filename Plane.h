@@ -1,6 +1,8 @@
+  
 //Basic plane equation class
 
 #include "Vec3f.h"
+#include "Ray.h"
 
 class Plane
 {
@@ -17,6 +19,6 @@ class Plane
     float getD();
 
     //Collision Methods
-    
+    Vec3f findCollision(Ray ray);
 
 };
