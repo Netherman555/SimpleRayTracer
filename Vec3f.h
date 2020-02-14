@@ -1,6 +1,6 @@
 /*
 Basic Vector class.
-Holds three floats, can do the majority of vector math
+Holds three doubles, can do the majority of vector math
 */
 
 #ifndef VEC3F_H
@@ -10,47 +10,47 @@ class Vec3f
 {
   private:
     //Private Variables
-    float x, y, z;
+    double x, y, z;
 
   public:
     //Constructors
-    Vec3f(float x, float y, float z); //Creates a vector with 3 floats
-    Vec3f(); //Creates a vector with 0's for all floats
+    Vec3f(double x, double y, double z); //Creates a vector with 3 doubles
+    Vec3f(); //Creates a vector with 0's for all doubles
 
     //Get Methods
-    float getX();
-    float getY();
-    float getZ();
+    double getX();
+    double getY();
+    double getZ();
 
     //Vector Math Methods
-    float dot(Vec3f vector);
+    double dot(Vec3f vector);
     Vec3f cross(Vec3f vector);
     
 
     //Operators
     Vec3f operator + (Vec3f vector) 
     {
-      float newX = vector.getX() + x;
-      float newY = vector.getY() + y;
-      float newZ = vector.getZ() + z;
+      double newX = vector.getX() + x;
+      double newY = vector.getY() + y;
+      double newZ = vector.getZ() + z;
 
       return Vec3f(newX, newY, newZ);
     }
 
     Vec3f operator - (Vec3f vector)
     {
-      float newX = x - vector.getX();
-      float newY = y - vector.getY();
-      float newZ = z - vector.getZ();
+      double newX = x - vector.getX();
+      double newY = y - vector.getY();
+      double newZ = z - vector.getZ();
 
       return Vec3f(newX, newY, newZ);
     }
 
-    Vec3f operator * (float f)
+    Vec3f operator * (double f)
     {
-      float newX = x * f;
-      float newY = x * y;
-      float newZ = x * z;
+      double newX = x * f;
+      double newY = x * y;
+      double newZ = x * z;
 
       return Vec3f(newX, newY, newZ);
     }
