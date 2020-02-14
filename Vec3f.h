@@ -3,6 +3,9 @@ Basic Vector class.
 Holds three floats, can do the majority of vector math
 */
 
+#ifndef VEC3F_H
+#define VEC3F_H
+
 class Vec3f
 {
   private:
@@ -54,3 +57,5 @@ class Vec3f
 
 
 };
+
+#endif
