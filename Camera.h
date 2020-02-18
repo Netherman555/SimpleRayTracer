@@ -19,6 +19,13 @@ class Camera
   public:
     Camera(Ray cameraRay, int xFOV, int yFOV, double ClippingDistance, int ResolutionX, int ResolutionY); //Creates a camera and arranges all pixel locations.
 
+    //Get Methods
+    std::vector<Vec3f> getPixelLocations();
+
     //Rendering functions
     
+    //Pixel Location functions
+    Vec3f RasterToNDC(Vec3f rasterCoordinate); //Turns a Raster Coordinate to a NDC coordinate.  Uses Vec3f with Z empty.
+    Vec3f NDCToScreen(Vec3f ndcCoordinate); //Turns a NDC Coordinate to a Screen Coordinate.  Uses Vec3f with Z empty.
+    Vec3f ScreenToWorld(Vec3f screenCoordinate); //Turns a screen coordinate into a 3d world coordinate
 };
