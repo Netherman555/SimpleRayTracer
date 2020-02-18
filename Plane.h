@@ -1,4 +1,4 @@
-  
+#pragma once  
 //Basic plane equation class
 
 #include "Vec3f.h"

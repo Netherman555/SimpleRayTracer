@@ -1,5 +1,6 @@
 #include "Ray.h"
 #include "Vec3f.h"
+#include "Plane.h"
 #include <math.h>
 #include <vector>
 #include <iostream>
@@ -15,17 +16,20 @@ class Camera
 
     int planeWidth, planeHeight; //Width and height of intersect plane
 
+    //Pixel Location functions
+    Vec3f RasterToNDC(Vec3f rasterCoordinate); //Turns a Raster Coordinate to a NDC coordinate.  Uses Vec3f with Z empty.
+    Vec3f NDCToScreen(Vec3f ndcCoordinate); //Turns a NDC Coordinate to a Screen Coordinate.  Uses Vec3f with Z empty.
+    Vec3f ScreenToWorld(Vec3f screenCoordinate); //Turns a screen coordinate into a 3d world coordinate
+
     std::vector<Vec3f> pixelLocations;
+    std::vector<Vec3f> hitLocations;
   public:
     Camera(Ray cameraRay, int xFOV, int yFOV, double ClippingDistance, int ResolutionX, int ResolutionY); //Creates a camera and arranges all pixel locations.
 
     //Get Methods
     std::vector<Vec3f> getPixelLocations();
+    std::vector<Vec3f> getHitLocations();
 
     //Rendering functions
-    
-    //Pixel Location functions
-    Vec3f RasterToNDC(Vec3f rasterCoordinate); //Turns a Raster Coordinate to a NDC coordinate.  Uses Vec3f with Z empty.
-    Vec3f NDCToScreen(Vec3f ndcCoordinate); //Turns a NDC Coordinate to a Screen Coordinate.  Uses Vec3f with Z empty.
-    Vec3f ScreenToWorld(Vec3f screenCoordinate); //Turns a screen coordinate into a 3d world coordinate
+    void render(Plane renderObject);
 };

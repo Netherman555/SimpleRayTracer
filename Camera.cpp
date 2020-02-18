@@ -30,11 +30,6 @@ Camera::Camera(Ray cameraRay, int xFOV, int yFOV, double ClippingDistance, int R
       pixelLocations.push_back(pixelWorld);
     }
   }
-
-  for(int i = 0; i < pixelLocations.size(); i++)
-  {
-    std::cout << i << " ( " << pixelLocations[i].getX() << " , " << pixelLocations[i].getY() << " , " << pixelLocations[i].getZ() << " ) " << std::endl;
-  }
 }
 
 Vec3f Camera::RasterToNDC(Vec3f rasterCoordinate)
@@ -61,4 +56,17 @@ Vec3f Camera::ScreenToWorld(Vec3f screenCoordinate)
 std::vector<Vec3f> Camera::getPixelLocations()
 {
   return pixelLocations;
+}
+
+std::vector<Vec3f> Camera::getHitLocations()
+{
+  return hitLocations;
+}
+
+void Camera::render(Plane renderObject)
+{
+  for(int i = 0; i < pixelLocations.size(); i++)
+  {
+      hitLocations.push_back(renderObject.findCollision(Ray(cameraPoint, pixelLocations[i])));
+  }
 }
