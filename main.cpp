@@ -4,6 +4,19 @@
 #include "Plane.h"
 #include <iostream>
 #include <vector>
+#include <fstream>
+
+Vec3f coordinateToRGB(Vec3f coordinate)
+{
+  if(coordinate.getZ() >= 255)
+  {
+    return Vec3f(0, 0, 255);
+  }
+  else
+  {
+    return Vec3f(0, 0, coordinate.getZ());
+  }
+}
 
 int main()
 {
@@ -13,8 +26,17 @@ int main()
 
   c.render(p);
   std::vector<Vec3f> hits = c.getHitLocations();
-  for(int i = 0; i <= 100; i++)
+  std::vector<Vec3f> colors;
+  for(int i = 0; i <= hits.size(); i++)
   {
-    std::cout << i + 1 << " ( " << hits[i].getX() << " , " << hits[i].getY() << " , " << hits[i].getZ() << " ) " << std::endl;
+    Vec3f c = coordinateToRGB(hits[i]);
+    colors.push_back(c);
+  }
+
+  std::ofstream f;
+  f.open("data.txt");
+  for(int i = 0; i <= colors.size(); i++)
+  {
+    f << "(" << colors[i].getX() << "," << colors[i].getY() << "," << colors[i].getZ() << ")\n";
   }
 }
