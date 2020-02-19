@@ -8,6 +8,10 @@
 
 Vec3f coordinateToRGB(Vec3f coordinate)
 {
+  if(coordinate == Vec3f(-1000000000, -1000000000, -1000000000))
+  {
+    return Vec3f(-1000000000, -1000000000, -1000000000);
+  }
   if(coordinate.getZ() >= 255)
   {
     return Vec3f(0, 0, 255);
@@ -22,7 +26,7 @@ int main()
 {
 	Ray r = Ray(Vec3f(0, 0, 0), Vec3f(0, 0, -1));
   Camera c = Camera(r, 30, 30, -1, 99, 99);
-  Plane p = Plane(2, 2, 2, 36);
+  Plane p = Plane(0, 0, -90, 100);
 
   c.render(p);
   std::vector<Vec3f> hits = c.getHitLocations();

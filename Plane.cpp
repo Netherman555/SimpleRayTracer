@@ -62,5 +62,10 @@ Vec3f Plane::findCollision(Ray ray)
   tempD -= pO;
   double t = tempD / pD;
 
+  if(t <= 1)
+  {
+    return Vec3f(-1000000000, -100000000, -1000000000);
+  }
+
   return Vec3f((t*direction.getX() + origin.getX()),(t*direction.getY() + origin.getY()),(t*direction.getZ() + origin.getZ()));
 }

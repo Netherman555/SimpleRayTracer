@@ -55,7 +55,14 @@ class Vec3f
       return Vec3f(newX, newY, newZ);
     }
 
-
+    bool operator == (Vec3f vector)
+    {
+      if(vector.getX() == x && vector.getY() == y && vector.getZ() == z)
+      {
+        return true;
+      }
+      return false;
+    }
 };
 
 #endif

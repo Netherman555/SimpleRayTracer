@@ -8,20 +8,28 @@ for t in open('data.txt').read().split():
     a, b, c = t.strip('()').split(',')
     tuples.append((float(a), float(b), float(c)))
 
-image.fill(tuples[1700])
+print(tuples[0])
+overallCount = 0
 
 for y in range(100):
     for x in range(100):
-        r = tuples[x*y][0]
-        g = tuples[x*y][1]
-        b = tuples[x*y][2]
+        r = tuples[overallCount][0]
+        g = tuples[overallCount][1]
+        b = tuples[overallCount][2]
 
-        if(b >= 255):
-            b = 255
+        if(b == -1000000000.0):
+            image.set_at((x, y), (0, 0, 0))
 
-        if(b <= -255):
-            b = 255
+        else:
+            if(b * 8 <= -255):
+                image.set_at((x, y), (0, 0, 255))
 
-        image.set_at((x, y), (0, 0, abs(int(b)), 0))
+            elif(b * 8 >= 0):
+                image.set_at((x, y), (0, 0, 0))
+
+            else:
+                image.set_at((x, y), (0, 0, abs(int(b * 8))))
+
+        overallCount += 1
 
 pygame.image.save(image, 'data.png') 
