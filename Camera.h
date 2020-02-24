@@ -22,14 +22,14 @@ class Camera
     Vec3f ScreenToWorld(Vec3f screenCoordinate); //Turns a screen coordinate into a 3d world coordinate
 
     std::vector<Vec3f> pixelLocations;
-    std::vector<Vec3f> hitLocations;
+    std::vector<Vec3f> pixelColors;
   public:
     Camera(Ray cameraRay, int xFOV, int yFOV, double ClippingDistance, int ResolutionX, int ResolutionY); //Creates a camera and arranges all pixel locations.
 
     //Get Methods
     std::vector<Vec3f> getPixelLocations();
-    std::vector<Vec3f> getHitLocations();
+    std::vector<Vec3f> getPixelColors();
 
     //Rendering functions
-    void render(Plane renderObject);
+    void render(std::vector<Plane> renderObjects);
 };

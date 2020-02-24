@@ -58,15 +58,33 @@ std::vector<Vec3f> Camera::getPixelLocations()
   return pixelLocations;
 }
 
-std::vector<Vec3f> Camera::getHitLocations()
+std::vector<Vec3f> Camera::getPixelColors()
 {
-  return hitLocations;
+  return pixelColors;
 }
 
-void Camera::render(Plane renderObject)
+void Camera::render(std::vector<Plane> renderObjects)
 {
+  double closest = 1000000000000000000; //Distance to current closest intersection
+  double current;
+  int currentPlane;
+
   for(int i = 0; i < pixelLocations.size(); i++)
   {
-      hitLocations.push_back(renderObject.findCollision(Ray(cameraPoint, pixelLocations[i])));
+      for(int f = 0; f <= renderObjects.size(); f++)
+      {
+        current = renderObjects[f].findT(Ray(cameraPoint, pixelLocations[i]));
+        if(current == -1000000000)
+        {
+          closest = closest;
+          currentPlane = currentPlane;
+        }
+        if(current < closest) 
+        {
+          closest = current; 
+          currentPlane = f;
+        }
+      }
+      pixelColors.push_back(renderObjects[currentPlane].getMaterial().getColor());
   }
 }
