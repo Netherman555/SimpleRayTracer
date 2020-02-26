@@ -71,7 +71,7 @@ void Camera::render(std::vector<Plane> renderObjects)
 
   for(int i = 0; i < pixelLocations.size(); i++)
   {
-      for(int f = 0; f <= renderObjects.size(); f++)
+      for(int f = 0; f < renderObjects.size(); f++)
       {
         current = renderObjects[f].findT(Ray(cameraPoint, pixelLocations[i]));
         if(current == -1000000000)
