@@ -12,8 +12,8 @@ int main()
   Camera c = Camera(r, 30, 30, -1, 99, 99);
   Material m = Material();
   Material m1 = Material(Vec3f(0, 0, 255));
-  Plane p = Plane(0, 0, -90, 100, m);
-  Plane p1 = Plane(0, 45, -90,300, m1);
+  Plane p = Plane(0, 0, -90, -100, m);
+  Plane p1 = Plane(0, 45, -90, -100, m1);
 
   std::vector<Plane> ps;
   ps.push_back(p);
