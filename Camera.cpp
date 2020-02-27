@@ -63,7 +63,7 @@ std::vector<Vec3f> Camera::getPixelColors()
   return pixelColors;
 }
 
-void Camera::render(std::vector<Plane> renderObjects)
+void Camera::render(std::vector<Plane> renderObjects, std::vector<Light> lightObjects)
 {
   double closest = 1000000000000000000; //Distance to current closest intersection
   double current;
@@ -79,12 +79,20 @@ void Camera::render(std::vector<Plane> renderObjects)
           closest = closest;
           currentPlane = currentPlane;
         }
-        if(current < closest) 
+        else if(current < closest) 
         {
           closest = current; 
           currentPlane = f;
         }
+
+        Vec3f intersectPoint = Ray(cameraPoint, pixelLocations[i]).getFromT(closest);
+        for(int z = 0; z < renderObjects.size(); z++)
+        {
+          for(int l = 0; l < lightObjects.size(); l++)
+          {
+            
+          }
+        }
       }
-      pixelColors.push_back(renderObjects[currentPlane].getMaterial().getColor());
   }
 }

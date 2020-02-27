@@ -2,6 +2,7 @@
 #include "Ray.h"
 #include "Camera.h"
 #include "Plane.h"
+#include "Light.h"
 #include <iostream>
 #include <vector>
 #include <fstream>
@@ -12,14 +13,17 @@ int main()
   Camera c = Camera(r, 30, 30, -1, 99, 99);
   Material m = Material();
   Material m1 = Material(Vec3f(0, 0, 255));
-  Plane p = Plane(0, 0, -90, -100, m);
-  Plane p1 = Plane(0, 45, -90, -100, m1);
+  Plane p = Plane(0, 0, 90, -100, m);
+  Plane p1 = Plane(0, 1, 90, -100, m1);
 
   std::vector<Plane> ps;
   ps.push_back(p);
-  ps.push_back(p1);
+  ps.push_back(p1);\
 
-  c.render(ps);
+  std::vector<Light> ls;
+  ls.push_back(Light(Vec3f(0, 0, 0), Vec3f(255, 255, 255), 0.1));
+
+  c.render(ps, ls);
 
   std::vector<Vec3f> colors = c.getPixelColors();
   std::ofstream f;

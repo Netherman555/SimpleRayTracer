@@ -1,6 +1,7 @@
 #include "Ray.h"
 #include "Vec3f.h"
 #include "Plane.h"
+#include "Light.h"
 #include <math.h>
 #include <vector>
 #include <iostream>
@@ -31,5 +32,5 @@ class Camera
     std::vector<Vec3f> getPixelColors();
 
     //Rendering functions
-    void render(std::vector<Plane> renderObjects);
+    void render(std::vector<Plane> renderObjects, std::vector<Light> lightObjects);
 };

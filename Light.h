@@ -7,13 +7,13 @@ class Light
   private:
     Vec3f position;
     Vec3f color;
-    int intensity;
+    double intensity;
   public:
     //Constructors
-    Light(Vec3f Position, Vec3f Color, int Intensity);
+    Light(Vec3f Position, Vec3f Color, double Intensity);
 
     //Get Methods
     Vec3f getPosition();
     Vec3f getColor();
     int getIntensity();
-}
+};

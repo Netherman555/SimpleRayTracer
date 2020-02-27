@@ -1,6 +1,6 @@
 #include "Light.h"
 
-Light::Light(Vec3f Position, Vec3f Color, int Intensity)
+Light::Light(Vec3f Position, Vec3f Color, double Intensity)
 {
   position = Position;
   color = Color;

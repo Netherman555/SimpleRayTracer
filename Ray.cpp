@@ -17,3 +17,12 @@ Vec3f Ray::getDirection()
 {
   return pDirection;
 }
+
+Vec3f Ray::getFromT(double T)
+{
+  double newX = (pDirection.getX() * T) + pOrigin.getX();
+  double newY = (pDirection.getY() * T) + pOrigin.getY();
+  double newZ = (pDirection.getZ() * T) + pOrigin.getZ();
+
+  return Vec3f(newX, newY, newZ);
+}

@@ -14,6 +14,9 @@ class Ray
     //Get Methods
     Vec3f getOrigin();
     Vec3f getDirection();
+
+    //Rendering Methods
+    Vec3f getFromT(double T);
 };
 
 #endif
